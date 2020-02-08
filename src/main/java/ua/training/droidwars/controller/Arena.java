@@ -6,17 +6,24 @@ import java.util.List;
 
 public class Arena implements Rules {
 
-    List<Droid> droids;
-    Droid winner;
+    private List<Droid> allDroids;
+    private List<Droid> chosenDroids;
+    private Droid winner;
 
     public void start() {
-        droids = introduceDroids();
-        winner = startTournament(droids);
-        announceResult(winner, droids);
+        allDroids = introduceDroids();
+        chosenDroids = chooseDroids(allDroids);
+        winner = startTournament(chosenDroids);
+        announceResult(winner, chosenDroids);
     }
 
     @Override
     public List<Droid> introduceDroids() {
+        return null;
+    }
+
+    @Override
+    public List<Droid> chooseDroids(List<Droid> droids) {
         return null;
     }
 
