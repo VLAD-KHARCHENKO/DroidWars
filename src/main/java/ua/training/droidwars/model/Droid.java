@@ -15,8 +15,7 @@ public abstract class Droid {
     private Integer attack; // Шанс 37.7%
     private Integer defence; // Шанс 37.5%
     private Integer health;
-
-
+    private String name;
 
     public abstract int useAttack(Droid droid);
 
@@ -27,6 +26,14 @@ public abstract class Droid {
     public abstract int useUltimateAbility(Droid droid); // Шанс 5%
 
     public abstract void prepareForNextBattle();
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public Integer getAttack() {
         return attack;
