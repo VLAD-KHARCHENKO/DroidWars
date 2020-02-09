@@ -1,21 +1,35 @@
 package ua.training.droidwars.controller;
 
+import ua.training.droidwars.controller.actionController.Action;
+import ua.training.droidwars.controller.actionController.impl.AttackAction;
+import ua.training.droidwars.controller.actionController.impl.DefenceAction;
+import ua.training.droidwars.controller.actionController.impl.SpecialAbilityAction;
+import ua.training.droidwars.controller.actionController.impl.UltimateAbilityAction;
 import ua.training.droidwars.model.Droid;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Arena implements Rules {
 
     private List<Droid> allDroids;
     private List<Droid> chosenDroids;
     private Droid winner;
+    private List<Action> actions;
 
     public void start() {
         allDroids = introduceDroids();
         chosenDroids = chooseDroids(allDroids);
         winner = startTournament(chosenDroids);
         announceResult(winner, chosenDroids);
+
+        //должно приходить списком из main
+        actions.add(new AttackAction());
+        actions.add(new DefenceAction());
+        actions.add(new SpecialAbilityAction());
+        actions.add(new UltimateAbilityAction());
+
     }
 
     @Override
@@ -37,7 +51,34 @@ public class Arena implements Rules {
 
     @Override
     public Droid droidsFight(Droid firstDroid, Droid secondDroid) {
-        return null;
+        do {
+            doMove(firstDroid, secondDroid);
+            doMove(secondDroid, firstDroid);
+        } while (bothDroidsAlive(firstDroid, secondDroid));
+
+        return getWinner(firstDroid, secondDroid);
+    }
+
+    private void doMove(Droid firstDroid, Droid secondDroid) {
+        int selectorNumber = getRandomNumber();
+
+        for (Action action : actions) {
+            action.performAction(selectorNumber, firstDroid, secondDroid);
+        }
+    }
+
+    private static int getRandomNumber() {
+        int percentageBound = 101;
+        Random r = new Random();
+        return r.nextInt(percentageBound);
+    }
+
+    private boolean bothDroidsAlive(Droid firstDroid, Droid secondDroid) {
+        return firstDroid.getHealth() > 0 || secondDroid.getHealth() > 0;
+    }
+
+    private Droid getWinner(Droid firstDroid, Droid secondDroid) {
+        return firstDroid.getHealth() > 0 ? firstDroid : secondDroid;
     }
 
     @Override
