@@ -20,6 +20,7 @@ public class Arena implements Rules {
 
     @Override
     public List<Droid> introduceDroids() {
+
         return null;
     }
 
