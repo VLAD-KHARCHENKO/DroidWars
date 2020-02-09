@@ -1,13 +1,15 @@
-package ua.training.droidwars.model;
+package ua.training.droidwars.model.kharchenko;
+
+import ua.training.droidwars.model.Droid;
 
 public class HutsulDroid extends Droid {
-   public HutsulDroid(String droidName, int attack, int defence, int health){
-       this.droidName=droidName;
+
+   public HutsulDroid(String name, int attack, int defence, int health){
+       this.name = name;
        this.attack = attack;
        this.defence = defence;
        this.health = health;
    }
-
 
     @java.lang.Override
     public int useAttack(Droid droid) {
@@ -33,4 +35,5 @@ public class HutsulDroid extends Droid {
     public void prepareForNextBattle() {
 
     }
+
 }

@@ -11,11 +11,11 @@ public abstract class Droid {
      * Либо восстановить 20 жизней, либо усилить след. атаку/защиту на 4 и т.д.
      * Ультимитивная способность позволяет сделать с вражеским, или своим дроидом, что угодно :)
      */
-    private String droidName;
-    private Integer attack; // Шанс 37.7%
-    private Integer defence; // Шанс 37.5%
-    private Integer health;
-    private String name;
+
+    protected Integer attack; // Шанс 37.7%
+    protected Integer defence; // Шанс 37.5%
+    protected Integer health;
+    protected String name;
 
     public abstract int useAttack(Droid droid);
 
@@ -27,20 +27,20 @@ public abstract class Droid {
 
     public abstract void prepareForNextBattle();
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Integer getAttack() {
         return attack;
     }
 
+    public void setAttack(Integer attack) {
+        this.attack = attack;
+    }
+
     public Integer getDefence() {
         return defence;
+    }
+
+    public void setDefence(Integer defence) {
+        this.defence = defence;
     }
 
     public Integer getHealth() {
@@ -51,10 +51,12 @@ public abstract class Droid {
         this.health = health;
     }
 
-    public Boolean getAlive() {
-        return isAlive;
+    public String getName() {
+        return name;
     }
 
-
+    public void setName(String name) {
+        this.name = name;
+    }
 
 }

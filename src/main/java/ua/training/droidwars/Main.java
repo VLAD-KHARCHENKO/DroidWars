@@ -1,7 +1,7 @@
 package ua.training.droidwars;
 
 import ua.training.droidwars.controller.Arena;
-import ua.training.droidwars.model.HutsulDroid;
+import ua.training.droidwars.model.kharchenko.HutsulDroid;
 
 public class Main {
 
