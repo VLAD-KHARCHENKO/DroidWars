@@ -17,6 +17,9 @@ public abstract class Droid {
     protected Integer health;
     protected String name;
 
+    public Droid() {
+    }
+
     public Droid(Integer attack, Integer defence, Integer health, String name) {
         this.attack = attack;
         this.defence = defence;

@@ -46,6 +46,7 @@ local.properties
 *.iws
 
 # IntelliJ
+.idea
 out/
 
 ### Java ###
