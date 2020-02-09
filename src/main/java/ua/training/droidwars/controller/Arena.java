@@ -1,6 +1,6 @@
 package ua.training.droidwars.controller;
 
-import ua.t.d.view.View;
+import ua.training.droidwars.view.View;
 import ua.training.droidwars.controller.actionController.Action;
 import ua.training.droidwars.controller.actionController.impl.AttackAction;
 import ua.training.droidwars.controller.actionController.impl.DefenceAction;
@@ -43,13 +43,7 @@ public class Arena implements Rules {
 
     }
 
-    public void   droidInfo(Droid droid) {
-        System.out.println("Information about "+  droid.getName());
-        System.out.println("attack: "+droid.getAttack());
-        System.out.println("defence: "+droid.getDefence());
-        System.out.println("health: "+droid.getHealth());
 
-    }
   
     @Override
     public List<Droid> introduceDroids() {

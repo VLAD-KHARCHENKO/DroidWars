@@ -1,4 +1,4 @@
-package ua.t.d.view;
+package ua.training.droidwars.view;
 
 import ua.training.droidwars.model.Droid;
 
