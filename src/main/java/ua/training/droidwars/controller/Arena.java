@@ -1,6 +1,12 @@
 package ua.training.droidwars.controller;
 
 import ua.training.droidwars.model.Droid;
+import ua.training.droidwars.model.kharchenko.Chugayster;
+import ua.training.droidwars.model.kharchenko.HutsulDroid;
+import ua.training.droidwars.model.kharchenko.Molfar;
+import ua.training.droidwars.model.olesiiuk.ImpartialDroid;
+import ua.training.droidwars.model.olesiiuk.MercifulDroid;
+import ua.training.droidwars.model.olesiiuk.RestlessDroid;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,11 +24,34 @@ public class Arena implements Rules {
         announceResult(winner, chosenDroids);
     }
 
+    public void   droidInfo(Droid droid) {
+        System.out.println("Information about "+  droid.getName());
+        System.out.println("attack: "+droid.getAttack());
+        System.out.println("defence: "+droid.getDefence());
+        System.out.println("health: "+droid.getHealth());
+
+    }
     @Override
     public List<Droid> introduceDroids() {
+        List<Droid> droidList = new ArrayList<>();
+        //гуцул боти
+        HutsulDroid hutsulDroid = new HutsulDroid();
+        Chugayster chugayster = new Chugayster();
+        Molfar molfar =new Molfar();
+        //olesiiuk боти
+        ImpartialDroid impartialDroid=new ImpartialDroid();
+        MercifulDroid mercifulDroid =new MercifulDroid();
+        RestlessDroid restlessDroid =new RestlessDroid();
+        droidList.add(hutsulDroid);
+        droidList.add(chugayster);
+        droidList.add(molfar);
+        droidList.add(impartialDroid);
+        droidList.add(mercifulDroid);
+        droidList.add(restlessDroid);
 
-        return null;
+        return droidList;
     }
+
 
     @Override
     public List<Droid> chooseDroids(List<Droid> droids) {
