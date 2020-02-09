@@ -1,15 +1,22 @@
 package ua.training.droidwars.controller;
 
+import ua.t.d.view.View;
 import ua.training.droidwars.model.Droid;
+
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Arena implements Rules {
+    private final int numberOfDroidForBattle = 8;
 
-    private List<Droid> allDroids;
+    private static  List<Droid> allDroids;
     private List<Droid> chosenDroids;
     private Droid winner;
+    private static View view;
+
+
 
     public void start() {
         allDroids = introduceDroids();
@@ -26,7 +33,48 @@ public class Arena implements Rules {
 
     @Override
     public List<Droid> chooseDroids(List<Droid> droids) {
-        return null;
+        ArrayList <Droid> tmpDroids = new ArrayList<>();
+        view.printMessage(view.FULL_LIST_OF_DROIDS);
+        displayDroidList();
+        view.printMessage(view.CHOOSE_DROID_SELECTION_MODE);
+        int buffer = measuresCheck(1,2);
+        if (buffer == 1) {
+            for (int i = 0; i < numberOfDroidForBattle; ++i) {
+                view.printMessage(view.CHOOSE_NUMBER_OF_DROID);
+                int number =measuresCheck(0,droids.size() - 1);
+                tmpDroids.add(droids.get(number));
+            }
+        }
+        else {
+            for (int i = 0; i < numberOfDroidForBattle; ++i) {
+                tmpDroids.add(droids.get(0 + (int) Math.random() * (droids.size() - 1)));
+            }
+        }
+        return tmpDroids;
+    }
+
+    public void displayDroidList () {
+        for (int i = 0; i < allDroids.size(); ++i) {
+            System.out.println(allDroids.get(i));
+        }
+    }
+
+    public int inputCheck(Scanner scanner)  {
+        while (!scanner.hasNextInt()) {
+            view.printMessage(view.WRONG_INPUT);
+            scanner.next();
+        }
+        return scanner.nextInt();
+    }
+
+    public int measuresCheck(int min, int max) {
+        Scanner sc = new Scanner(System.in);
+        int number = inputCheck(sc);
+        while (number > max || number < min) {
+            view.printMessage(view.WRONG_INPUT);
+            number = inputCheck(sc);
+        }
+        return number;
     }
 
     @Override
