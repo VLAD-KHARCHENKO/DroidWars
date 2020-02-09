@@ -5,12 +5,12 @@ import ua.training.droidwars.model.Droid;
 public class TestDroid extends Droid {
 
     @Override
-    public int attack(Droid droid) {
+    public int useAttack(Droid droid) {
         return 0;
     }
 
     @Override
-    public int defend(Droid droid) {
+    public int useDefence(Droid droid) {
         return 0;
     }
 
@@ -20,7 +20,12 @@ public class TestDroid extends Droid {
     }
 
     @Override
-    public void prepareBeforeNextBattle() {
+    public int useUltimateAbility(Droid droid) {
+        return 0;
+    }
+
+    @Override
+    public void prepareForNextBattle() {
 
     }
 
